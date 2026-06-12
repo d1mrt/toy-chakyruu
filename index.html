@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 15-июль, 2026-жыл, саат 18:00, Бишкек.">
+    <title>Дилмурат &amp; Аида | Үйлөнүү үлпөтүнө чакыруу</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #20242b;
+            --muted: #62666f;
+            --paper: #fbfaf8;
+            --white: #ffffff;
+            --sage: #386759;
+            --rose: #9c5363;
+            --gold: #bd8f36;
+            --mist: #edf4f1;
+            --blush: #f4e1dd;
+            --line: rgba(32, 36, 43, 0.13);
+            --shadow: 0 18px 48px rgba(32, 36, 43, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        body::selection {
+            background: var(--blush);
+            color: var(--ink);
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a,
+        button {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .petals {
+            position: fixed;
+            inset: 0;
+            z-index: 8;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            bottom: -32px;
+            width: 14px;
+            height: 20px;
+            border-radius: 70% 12% 70% 12%;
+            background: linear-gradient(140deg, rgba(244, 225, 221, 0.88), rgba(156, 83, 99, 0.42));
+            opacity: 0;
+            transform: rotate(18deg);
+            animation: floatPetal linear forwards;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 88svh;
+            display: grid;
+            align-items: center;
+            padding: 44px 24px 36px;
+            overflow: hidden;
+            color: var(--white);
+            isolation: isolate;
+        }
+
+        .hero__photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: -3;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(12, 20, 22, 0.78), rgba(12, 20, 22, 0.42) 48%, rgba(12, 20, 22, 0.18)),
+                linear-gradient(0deg, rgba(12, 20, 22, 0.46), rgba(12, 20, 22, 0.04) 42%);
+        }
+
+        .hero__inner {
+            width: min(1120px, calc(100vw - 48px));
+            margin: 0 auto;
+            display: grid;
+            gap: 36px;
+            min-width: 0;
+        }
+
+        .hero__inner > * {
+            min-width: 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .hero h1 {
+            max-width: 760px;
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 5.3rem;
+            line-height: 0.92;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .hero__copy {
+            max-width: 610px;
+            margin: 20px 0 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.08rem;
+        }
+
+        .hero__actions,
+        .section__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 13px 20px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: var(--ink);
+            background: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .button--primary {
+            color: var(--white);
+            background: var(--sage);
+            border-color: var(--sage);
+        }
+
+        .button--primary:hover {
+            background: #2f584d;
+        }
+
+        .button--ghost {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.48);
+            backdrop-filter: blur(10px);
+        }
+
+        .button--light {
+            color: var(--ink);
+            background: var(--white);
+            border-color: var(--line);
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 92px);
+            gap: 12px;
+            max-width: 100%;
+        }
+
+        .time-box {
+            min-width: 0;
+            min-height: 92px;
+            padding: 12px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.13);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+            backdrop-filter: blur(14px);
+            text-align: center;
+        }
+
+        .time-box span {
+            display: block;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2.1rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .time-box small {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .section {
+            padding: 74px 24px;
+        }
+
+        .section--intro {
+            background: var(--white);
+        }
+
+        .section--details {
+            background: linear-gradient(180deg, var(--mist), var(--paper));
+        }
+
+        .section--guests {
+            background: var(--white);
+        }
+
+        .section--rsvp {
+            color: var(--white);
+            background:
+                linear-gradient(rgba(32, 36, 43, 0.78), rgba(32, 36, 43, 0.78)),
+                url("assets/wedding-hero.png") center/cover no-repeat;
+        }
+
+        .container {
+            width: min(1120px, calc(100vw - 48px));
+            margin: 0 auto;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.55fr);
+            gap: 44px;
+            align-items: center;
+        }
+
+        .section-title {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 3.2rem;
+            line-height: 1.02;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            max-width: 720px;
+            margin: 22px 0 0;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .date-mark {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--paper);
+            box-shadow: 0 18px 42px rgba(32, 36, 43, 0.08);
+            overflow: hidden;
+        }
+
+        .date-mark__top {
+            padding: 14px 18px;
+            color: var(--white);
+            background: var(--rose);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .date-mark__body {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: center;
+            padding: 24px 18px;
+            text-align: center;
+        }
+
+        .date-mark strong {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 5rem;
+            line-height: 0.9;
+            color: var(--sage);
+        }
+
+        .date-mark span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .detail-card {
+            min-height: 168px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 14px 34px rgba(32, 36, 43, 0.07);
+        }
+
+        .detail-card__label {
+            margin: 0 0 14px;
+            color: var(--rose);
+            font-size: 0.76rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .detail-card h3 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2rem;
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .detail-card p {
+            margin: 10px 0 0;
+            color: var(--muted);
+        }
+
+        .venue {
+            display: grid;
+            grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.48fr);
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 28px;
+        }
+
+        .map {
+            min-height: 360px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 18px 42px rgba(32, 36, 43, 0.1);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            border: 0;
+        }
+
+        .venue-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 28px;
+            min-height: 360px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 18px 42px rgba(32, 36, 43, 0.08);
+        }
+
+        .venue-panel h3 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2.4rem;
+            line-height: 1.02;
+            letter-spacing: 0;
+        }
+
+        .venue-panel p {
+            margin: 14px 0 0;
+            color: var(--muted);
+        }
+
+        .guest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .guest-note {
+            min-height: 190px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--paper);
+        }
+
+        .guest-note strong {
+            display: block;
+            margin-bottom: 14px;
+            color: var(--rose);
+            font-size: 0.76rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .guest-note h3 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.9rem;
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .guest-note p {
+            margin: 12px 0 0;
+            color: var(--muted);
+        }
+
+        .rsvp {
+            display: grid;
+            grid-template-columns: minmax(0, 0.74fr) minmax(330px, 0.56fr);
+            gap: 34px;
+            align-items: start;
+        }
+
+        .rsvp .section-title {
+            max-width: 680px;
+        }
+
+        .rsvp .lead {
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .rsvp-form {
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(18px);
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-field label,
+        .radio-label {
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.84rem;
+            font-weight: 800;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 8px;
+            padding: 13px 14px;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(255, 255, 255, 0.56);
+        }
+
+        .form-field select option {
+            color: var(--ink);
+        }
+
+        .form-field textarea {
+            min-height: 108px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.09);
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: 17px;
+            height: 17px;
+            accent-color: var(--sage);
+        }
+
+        .form-status {
+            min-height: 22px;
+            margin: 14px 0 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            padding: 28px 24px;
+            color: var(--muted);
+            background: var(--white);
+            text-align: center;
+            font-size: 0.92rem;
+        }
+
+        @keyframes floatPetal {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 0, 0) rotate(12deg);
+            }
+            18% {
+                opacity: 0.76;
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--drift), -104vh, 0) rotate(240deg);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                min-height: 88svh;
+                padding: 36px 20px 30px;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .intro,
+            .venue,
+            .rsvp {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guest-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .rsvp {
+                justify-items: start;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .hero {
+                min-height: 87svh;
+                padding: 28px 18px 24px;
+            }
+
+            .hero__inner,
+            .container {
+                width: calc(100vw - 36px);
+            }
+
+            .hero::before {
+                background:
+                    linear-gradient(90deg, rgba(12, 20, 22, 0.82), rgba(12, 20, 22, 0.48)),
+                    linear-gradient(0deg, rgba(12, 20, 22, 0.46), rgba(12, 20, 22, 0.04) 42%);
+            }
+
+            .hero h1 {
+                font-size: 3.1rem;
+            }
+
+            .hero__copy,
+            .lead {
+                font-size: 1rem;
+            }
+
+            .hero__copy {
+                width: calc(100vw - 36px);
+                max-width: calc(100vw - 36px);
+                overflow-wrap: break-word;
+            }
+
+            .hero__actions,
+            .section__actions {
+                width: calc(100vw - 36px);
+                max-width: 100%;
+            }
+
+            .button {
+                width: 100%;
+                max-width: calc(100vw - 36px);
+            }
+
+            .countdown {
+                grid-template-columns: repeat(4, calc((100vw - 60px) / 4));
+                gap: 8px;
+                width: calc(100vw - 36px);
+                max-width: calc(100vw - 36px);
+            }
+
+            .time-box {
+                min-height: 78px;
+                padding: 10px 6px;
+            }
+
+            .time-box span {
+                font-size: 1.64rem;
+            }
+
+            .time-box small {
+                font-size: 0.68rem;
+            }
+
+            .section {
+                padding: 56px 18px;
+            }
+
+            .section-title {
+                font-size: 2.45rem;
+            }
+
+            .date-mark__body {
+                gap: 10px;
+                padding: 22px 12px;
+            }
+
+            .date-mark strong {
+                font-size: 4.4rem;
+            }
+
+            .detail-card,
+            .venue-panel,
+            .guest-note,
+            .rsvp-form {
+                padding: 20px;
+            }
+
+            .guest-grid,
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+
+            .map,
+            .map iframe {
+                min-height: 300px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .petals {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="petals" id="petalsContainer" aria-hidden="true"></div>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <img class="hero__photo" src="assets/wedding-hero.png" alt="">
+                <div class="hero__inner">
+                    <div>
+                        <p class="eyebrow">Үйлөнүү үлпөтүнө чакыруу</p>
+                        <h1 id="hero-title">Дилмурат &amp; Аида</h1>
+                        <p class="hero__copy">Урматтуу коногубуз, сизди жашообуздагы эң өзгөчө күндү биз менен бирге белгилөөгө чын жүрөктөн чакырабыз.</p>
+                        <div class="hero__actions" aria-label="Негизги аракеттер">
+                            <a class="button button--primary" href="#rsvp">Келем деп ырастоо</a>
+                            <a class="button button--ghost" href="#details">Маалыматты көрүү</a>
+                        </div>
+                    </div>
+
+                    <div class="countdown" aria-label="Тойго чейинки убакыт">
+                        <div class="time-box"><span id="days">00</span><small>Күн</small></div>
+                        <div class="time-box"><span id="hours">00</span><small>Саат</small></div>
+                        <div class="time-box"><span id="minutes">00</span><small>Мүнөт</small></div>
+                        <div class="time-box"><span id="seconds">00</span><small>Секунд</small></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--intro" aria-labelledby="intro-title">
+                <div class="container intro">
+                    <div>
+                        <p class="eyebrow" style="color: var(--rose);">Сиз биз үчүн кымбатсыз</p>
+                        <h2 class="section-title" id="intro-title">Жүрөктөр бириккен күндө жаныбызда болуңуз.</h2>
+                        <p class="lead">Бул күн жылуулукка, ак батага жана сүйүнүчкө толсун. Сиздин катышууңуз майрамыбызды дагы да маңыздуу кылат.</p>
+                    </div>
+
+                    <div class="date-mark" aria-label="Той күнү">
+                        <div class="date-mark__top">Шаршемби</div>
+                        <div class="date-mark__body">
+                            <span>Июль</span>
+                            <strong>15</strong>
+                            <span>2026</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--details" id="details" aria-labelledby="details-title">
+                <div class="container">
+                    <p class="eyebrow" style="color: var(--rose);">Маалымат</p>
+                    <h2 class="section-title" id="details-title">Тойдун чоо-жайы</h2>
+                    <div class="detail-grid">
+                        <article class="detail-card">
+                            <p class="detail-card__label">Күнү</p>
+                            <h3>15-июль, 2026</h3>
+                            <p>Шаршемби күнү</p>
+                        </article>
+                        <article class="detail-card">
+                            <p class="detail-card__label">Убактысы</p>
+                            <h3>18:00</h3>
+                            <p>Конокторду тосуу кечки саат алтыда башталат.</p>
+                        </article>
+                        <article class="detail-card">
+                            <p class="detail-card__label">Дареги</p>
+                            <h3>Алтын Ордо</h3>
+                            <p>Бишкек шаары, “Алтын Ордо” рестораны</p>
+                        </article>
+                    </div>
+
+                    <div class="venue">
+                        <div class="map">
+                            <iframe title="Алтын Ордо ресторанынын картасы" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.3942361730073!2d74.6312450765955!3d42.86450120306764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6344f6760cf%3A0x6bda19097893f4e2!2z0KDQtdGB0YLQvtGA0LDQvCAi0JDQu9GC0YvQvSDQntGA0LTQviI!5e0!3m2!1sru!2skg!4v1717580000000!5m2!1sru!2skg" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <aside class="venue-panel" aria-label="Жайгашкан жер">
+                            <div>
+                                <p class="detail-card__label">Жайгашкан жер</p>
+                                <h3>Бишкек, “Алтын Ордо” рестораны</h3>
+                                <p>Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.</p>
+                            </div>
+                            <div class="section__actions">
+                                <a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=42.86450120306764,74.6312450765955" target="_blank" rel="noopener">Картаны ачуу</a>
+                                <button class="button button--light" type="button" onclick="downloadCalendar()">Календарга кошуу</button>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--guests" aria-labelledby="guest-title">
+                <div class="container">
+                    <p class="eyebrow" style="color: var(--rose);">Коноктор үчүн</p>
+                    <h2 class="section-title" id="guest-title">Келүүңүз ыңгайлуу болсун.</h2>
+                    <p class="lead">Бир нече майда маалыматты алдын ала билсеңиз, майрамга шашпай жана жайдары маанайда келесиз.</p>
+
+                    <div class="guest-grid">
+                        <article class="guest-note">
+                            <strong>Келүү убактысы</strong>
+                            <h3>17:30дан баштап</h3>
+                            <p>Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.</p>
+                        </article>
+                        <article class="guest-note">
+                            <strong>Кийим стили</strong>
+                            <h3>Жарашыктуу</h3>
+                            <p>Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.</p>
+                        </article>
+                        <article class="guest-note">
+                            <strong>Кошумча конок</strong>
+                            <h3>Санын белгилеңиз</h3>
+                            <p>RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.</p>
+                        </article>
+                        <article class="guest-note">
+                            <strong>Ак бата</strong>
+                            <h3>Эң чоң белек</h3>
+                            <p>Биз үчүн эң кымбаты - сиздин катышууңуз, жакшы тилегиңиз жана ак батаңыз.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-title">
+                <div class="container rsvp">
+                    <div>
+                        <p class="eyebrow">Сизди күтөбүз</p>
+                        <h2 class="section-title" id="rsvp-title">Майрамыбызга катышарыңызды билдирип коюңуз.</h2>
+                        <p class="lead">Форманы толтурсаңыз, жооп WhatsApp аркылуу даяр билдирүү болуп ачылат. Биз конок тизмесин тактап, орундарды алдын ала ыңгайлаштырып алабыз.</p>
+                    </div>
+                    <form class="rsvp-form" id="rsvpForm">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="guestName">Атыңыз</label>
+                                <input id="guestName" name="guestName" type="text" autocomplete="name" placeholder="Мисалы: Нурбек" required>
+                            </div>
+
+                            <div class="form-field">
+                                <span class="radio-label">Катышасызбы?</span>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="attendance" value="Келем" checked>
+                                        <span>Келем</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="attendance" value="Тилекке каршы келе албайм">
+                                        <span>Келе албайм</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="guestCount">Канча киши?</label>
+                                <select id="guestCount" name="guestCount">
+                                    <option value="1">1 киши</option>
+                                    <option value="2">2 киши</option>
+                                    <option value="3">3 киши</option>
+                                    <option value="4+">4 же андан көп</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="guestNote">Кошумча билдирүү</label>
+                                <textarea id="guestNote" name="guestNote" placeholder="Каалоо-тилек же кошумча маалымат"></textarea>
+                            </div>
+
+                            <button class="button button--light" type="submit">WhatsApp аркылуу жөнөтүү</button>
+                        </div>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            Дилмурат &amp; Аида · 15-июль, 2026 · Бишкек
+        </footer>
+    </div>
+
+    <script>
+        const weddingDate = new Date("2026-07-15T18:00:00+06:00").getTime();
+        const countdownElements = {
+            days: document.getElementById("days"),
+            hours: document.getElementById("hours"),
+            minutes: document.getElementById("minutes"),
+            seconds: document.getElementById("seconds")
+        };
+
+        function pad(value) {
+            return String(Math.max(0, value)).padStart(2, "0");
+        }
+
+        function updateCountdown() {
+            const distance = weddingDate - Date.now();
+
+            if (distance <= 0) {
+                countdownElements.days.textContent = "00";
+                countdownElements.hours.textContent = "00";
+                countdownElements.minutes.textContent = "00";
+                countdownElements.seconds.textContent = "00";
+                return;
+            }
+
+            countdownElements.days.textContent = pad(Math.floor(distance / (1000 * 60 * 60 * 24)));
+            countdownElements.hours.textContent = pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
+            countdownElements.minutes.textContent = pad(Math.floor((distance / (1000 * 60)) % 60));
+            countdownElements.seconds.textContent = pad(Math.floor((distance / 1000) % 60));
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        function sendWhatsApp(message) {
+            const phoneNumber = "996704251571";
+            const text = message || "Салам! Чакырууну алдым. Кудай буюрса, тойго сөзсүз барабыз!";
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+        }
+
+        const rsvpForm = document.getElementById("rsvpForm");
+        const formStatus = document.getElementById("formStatus");
+
+        rsvpForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(rsvpForm);
+            const guestName = String(formData.get("guestName") || "").trim();
+            const attendance = String(formData.get("attendance") || "Келем");
+            const guestCount = String(formData.get("guestCount") || "1");
+            const guestNote = String(formData.get("guestNote") || "").trim();
+
+            if (!guestName) {
+                formStatus.textContent = "Сураныч, атыңызды жазыңыз.";
+                document.getElementById("guestName").focus();
+                return;
+            }
+
+            const message = [
+                "Салам! Чакырууну алдым.",
+                `Атым: ${guestName}`,
+                `Жообум: ${attendance}`,
+                `Конок саны: ${guestCount}`,
+                guestNote ? `Кошумча: ${guestNote}` : "",
+                "Рахмат!"
+            ].filter(Boolean).join("\n");
+
+            formStatus.textContent = "WhatsApp ачылды. Билдирүүнү жөнөтүп коюңуз.";
+            sendWhatsApp(message);
+        });
+
+        function downloadCalendar() {
+            const event = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Dilmurat and Aida Wedding//KY",
+                "BEGIN:VEVENT",
+                "UID:dilmurat-aida-wedding-20260715@wedding.local",
+                "DTSTAMP:20260612T000000Z",
+                "DTSTART:20260715T120000Z",
+                "DTEND:20260715T180000Z",
+                "SUMMARY:Дилмурат жана Аиданын үйлөнүү үлпөтү",
+                "LOCATION:Алтын Ордо рестораны, Бишкек",
+                "DESCRIPTION:Дилмурат менен Аиданын үйлөнүү үлпөт тою. Башталышы: 18:00.",
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\r\n");
+
+            const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "dilmurat-aida-wedding.ics";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(link.href);
+        }
+
+        const petalsContainer = document.getElementById("petalsContainer");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function createPetal() {
+            if (reducedMotion) return;
+
+            const petal = document.createElement("span");
+            petal.className = "petal";
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.setProperty("--drift", `${Math.random() * 140 - 70}px`);
+            petal.style.animationDuration = `${Math.random() * 5 + 9}s`;
+            petal.style.animationDelay = `${Math.random() * 1.4}s`;
+            petal.style.width = `${Math.random() * 8 + 10}px`;
+            petal.style.height = `${Math.random() * 9 + 16}px`;
+            petalsContainer.appendChild(petal);
+
+            setTimeout(() => petal.remove(), 15000);
+        }
+
+        setInterval(createPetal, 1100);
+    </script>
+</body>
+</html>
