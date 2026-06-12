@@ -7,7 +7,8 @@
     <title>Дилмурат &amp; Аида | Үйлөнүү үлпөтүнө чакыруу</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <style>
         :root {
@@ -114,6 +115,37 @@
             background:
                 linear-gradient(90deg, rgba(12, 20, 22, 0.78), rgba(12, 20, 22, 0.42) 48%, rgba(12, 20, 22, 0.18)),
                 linear-gradient(0deg, rgba(12, 20, 22, 0.46), rgba(12, 20, 22, 0.04) 42%);
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+        }
+
+        .language-switcher label {
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .language-switcher select {
+            border: 0;
+            border-radius: 6px;
+            padding: 7px 28px 7px 10px;
+            color: var(--ink);
+            background: var(--white);
+            font-weight: 800;
+            outline: none;
         }
 
         .hero__inner {
@@ -620,9 +652,14 @@
                 padding: 28px 18px 24px;
             }
 
+            .language-switcher {
+                top: 16px;
+                right: 18px;
+            }
+
             .hero__inner,
             .container {
-                width: calc(100vw - 36px);
+                width: 100%;
             }
 
             .hero::before {
@@ -641,27 +678,27 @@
             }
 
             .hero__copy {
-                width: calc(100vw - 36px);
-                max-width: calc(100vw - 36px);
+                width: 100%;
+                max-width: 100%;
                 overflow-wrap: break-word;
             }
 
             .hero__actions,
             .section__actions {
-                width: calc(100vw - 36px);
+                width: 100%;
                 max-width: 100%;
             }
 
             .button {
                 width: 100%;
-                max-width: calc(100vw - 36px);
+                max-width: 100%;
             }
 
             .countdown {
-                grid-template-columns: repeat(4, calc((100vw - 60px) / 4));
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 8px;
-                width: calc(100vw - 36px);
-                max-width: calc(100vw - 36px);
+                width: 100%;
+                max-width: 100%;
             }
 
             .time-box {
@@ -735,22 +772,30 @@
         <main>
             <section class="hero" aria-labelledby="hero-title">
                 <img class="hero__photo" src="assets/wedding-hero.png" alt="">
+                <div class="language-switcher">
+                    <label for="languageSelect" data-i18n="languageLabel">Тил</label>
+                    <select id="languageSelect" aria-label="Select language">
+                        <option value="ky">Кыргызча</option>
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
                 <div class="hero__inner">
                     <div>
-                        <p class="eyebrow">Үйлөнүү үлпөтүнө чакыруу</p>
-                        <h1 id="hero-title">Дилмурат &amp; Аида</h1>
-                        <p class="hero__copy">Урматтуу коногубуз, сизди жашообуздагы эң өзгөчө күндү биз менен бирге белгилөөгө чын жүрөктөн чакырабыз.</p>
-                        <div class="hero__actions" aria-label="Негизги аракеттер">
-                            <a class="button button--primary" href="#rsvp">Келем деп ырастоо</a>
-                            <a class="button button--ghost" href="#details">Маалыматты көрүү</a>
+                        <p class="eyebrow" data-i18n="heroEyebrow">Үйлөнүү үлпөтүнө чакыруу</p>
+                        <h1 id="hero-title" data-i18n="heroTitle">Дилмурат &amp; Аида</h1>
+                        <p class="hero__copy" data-i18n="heroCopy">Урматтуу коногубуз, сизди жашообуздагы эң өзгөчө күндү биз менен бирге белгилөөгө чын жүрөктөн чакырабыз.</p>
+                        <div class="hero__actions" aria-label="Негизги аракеттер" data-i18n-aria="heroActionsAria">
+                            <a class="button button--primary" href="#rsvp" data-i18n="heroConfirm">Келем деп ырастоо</a>
+                            <a class="button button--ghost" href="#details" data-i18n="heroDetails">Маалыматты көрүү</a>
                         </div>
                     </div>
 
-                    <div class="countdown" aria-label="Тойго чейинки убакыт">
-                        <div class="time-box"><span id="days">00</span><small>Күн</small></div>
-                        <div class="time-box"><span id="hours">00</span><small>Саат</small></div>
-                        <div class="time-box"><span id="minutes">00</span><small>Мүнөт</small></div>
-                        <div class="time-box"><span id="seconds">00</span><small>Секунд</small></div>
+                    <div class="countdown" aria-label="Тойго чейинки убакыт" data-i18n-aria="countdownAria">
+                        <div class="time-box"><span id="days">00</span><small data-i18n="timeDays">Күн</small></div>
+                        <div class="time-box"><span id="hours">00</span><small data-i18n="timeHours">Саат</small></div>
+                        <div class="time-box"><span id="minutes">00</span><small data-i18n="timeMinutes">Мүнөт</small></div>
+                        <div class="time-box"><span id="seconds">00</span><small data-i18n="timeSeconds">Секунд</small></div>
                     </div>
                 </div>
             </section>
@@ -758,15 +803,15 @@
             <section class="section section--intro" aria-labelledby="intro-title">
                 <div class="container intro">
                     <div>
-                        <p class="eyebrow" style="color: var(--rose);">Сиз биз үчүн кымбатсыз</p>
-                        <h2 class="section-title" id="intro-title">Жүрөктөр бириккен күндө жаныбызда болуңуз.</h2>
-                        <p class="lead">Бул күн жылуулукка, ак батага жана сүйүнүчкө толсун. Сиздин катышууңуз майрамыбызды дагы да маңыздуу кылат.</p>
+                        <p class="eyebrow" style="color: var(--rose);" data-i18n="introEyebrow">Сиз биз үчүн кымбатсыз</p>
+                        <h2 class="section-title" id="intro-title" data-i18n="introTitle">Жүрөктөр бириккен күндө жаныбызда болуңуз.</h2>
+                        <p class="lead" data-i18n="introLead">Бул күн жылуулукка, ак батага жана сүйүнүчкө толсун. Сиздин катышууңуз майрамыбызды дагы да маңыздуу кылат.</p>
                     </div>
 
-                    <div class="date-mark" aria-label="Той күнү">
-                        <div class="date-mark__top">Шаршемби</div>
+                    <div class="date-mark" aria-label="Той күнү" data-i18n-aria="dateAria">
+                        <div class="date-mark__top" data-i18n="dateWeekday">Шаршемби</div>
                         <div class="date-mark__body">
-                            <span>Июль</span>
+                            <span data-i18n="dateMonth">Июль</span>
                             <strong>15</strong>
                             <span>2026</span>
                         </div>
@@ -776,39 +821,39 @@
 
             <section class="section section--details" id="details" aria-labelledby="details-title">
                 <div class="container">
-                    <p class="eyebrow" style="color: var(--rose);">Маалымат</p>
-                    <h2 class="section-title" id="details-title">Тойдун чоо-жайы</h2>
+                    <p class="eyebrow" style="color: var(--rose);" data-i18n="detailsEyebrow">Маалымат</p>
+                    <h2 class="section-title" id="details-title" data-i18n="detailsTitle">Тойдун чоо-жайы</h2>
                     <div class="detail-grid">
                         <article class="detail-card">
-                            <p class="detail-card__label">Күнү</p>
-                            <h3>15-июль, 2026</h3>
-                            <p>Шаршемби күнү</p>
+                            <p class="detail-card__label" data-i18n="detailDateLabel">Күнү</p>
+                            <h3 data-i18n="detailDateTitle">15-июль, 2026</h3>
+                            <p data-i18n="detailDateCopy">Шаршемби күнү</p>
                         </article>
                         <article class="detail-card">
-                            <p class="detail-card__label">Убактысы</p>
-                            <h3>18:00</h3>
-                            <p>Конокторду тосуу кечки саат алтыда башталат.</p>
+                            <p class="detail-card__label" data-i18n="detailTimeLabel">Убактысы</p>
+                            <h3 data-i18n="detailTimeTitle">18:00</h3>
+                            <p data-i18n="detailTimeCopy">Конокторду тосуу кечки саат алтыда башталат.</p>
                         </article>
                         <article class="detail-card">
-                            <p class="detail-card__label">Дареги</p>
-                            <h3>Алтын Ордо</h3>
-                            <p>Бишкек шаары, “Алтын Ордо” рестораны</p>
+                            <p class="detail-card__label" data-i18n="detailAddressLabel">Дареги</p>
+                            <h3 data-i18n="detailAddressTitle">Алтын Ордо</h3>
+                            <p data-i18n="detailAddressCopy">Бишкек шаары, “Алтын Ордо” рестораны</p>
                         </article>
                     </div>
 
                     <div class="venue">
                         <div class="map">
-                            <iframe title="Алтын Ордо ресторанынын картасы" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.3942361730073!2d74.6312450765955!3d42.86450120306764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6344f6760cf%3A0x6bda19097893f4e2!2z0KDQtdGB0YLQvtGA0LDQvCAi0JDQu9GC0YvQvSDQntGA0LTQviI!5e0!3m2!1sru!2skg!4v1717580000000!5m2!1sru!2skg" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe title="Алтын Ордо ресторанынын картасы" data-i18n-title="mapTitle" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.3942361730073!2d74.6312450765955!3d42.86450120306764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6344f6760cf%3A0x6bda19097893f4e2!2z0KDQtdGB0YLQvtGA0LDQvCAi0JDQu9GC0YvQvSDQntGA0LTQviI!5e0!3m2!1sru!2skg!4v1717580000000!5m2!1sru!2skg" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        <aside class="venue-panel" aria-label="Жайгашкан жер">
+                        <aside class="venue-panel" aria-label="Жайгашкан жер" data-i18n-aria="venueAria">
                             <div>
-                                <p class="detail-card__label">Жайгашкан жер</p>
-                                <h3>Бишкек, “Алтын Ордо” рестораны</h3>
-                                <p>Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.</p>
+                                <p class="detail-card__label" data-i18n="venueLabel">Жайгашкан жер</p>
+                                <h3 data-i18n="venueTitle">Бишкек, “Алтын Ордо” рестораны</h3>
+                                <p data-i18n="venueCopy">Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.</p>
                             </div>
                             <div class="section__actions">
-                                <a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=42.86450120306764,74.6312450765955" target="_blank" rel="noopener">Картаны ачуу</a>
-                                <button class="button button--light" type="button" onclick="downloadCalendar()">Календарга кошуу</button>
+                                <a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=42.86450120306764,74.6312450765955" target="_blank" rel="noopener" data-i18n="openMap">Картаны ачуу</a>
+                                <button class="button button--light" type="button" onclick="downloadCalendar()" data-i18n="addCalendar">Календарга кошуу</button>
                             </div>
                         </aside>
                     </div>
@@ -817,30 +862,30 @@
 
             <section class="section section--guests" aria-labelledby="guest-title">
                 <div class="container">
-                    <p class="eyebrow" style="color: var(--rose);">Коноктор үчүн</p>
-                    <h2 class="section-title" id="guest-title">Келүүңүз ыңгайлуу болсун.</h2>
-                    <p class="lead">Бир нече майда маалыматты алдын ала билсеңиз, майрамга шашпай жана жайдары маанайда келесиз.</p>
+                    <p class="eyebrow" style="color: var(--rose);" data-i18n="guestEyebrow">Коноктор үчүн</p>
+                    <h2 class="section-title" id="guest-title" data-i18n="guestTitle">Келүүңүз ыңгайлуу болсун.</h2>
+                    <p class="lead" data-i18n="guestLead">Бир нече майда маалыматты алдын ала билсеңиз, майрамга шашпай жана жайдары маанайда келесиз.</p>
 
                     <div class="guest-grid">
                         <article class="guest-note">
-                            <strong>Келүү убактысы</strong>
-                            <h3>17:30дан баштап</h3>
-                            <p>Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.</p>
+                            <strong data-i18n="guest1Label">Келүү убактысы</strong>
+                            <h3 data-i18n="guest1Title">17:30дан баштап</h3>
+                            <p data-i18n="guest1Copy">Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.</p>
                         </article>
                         <article class="guest-note">
-                            <strong>Кийим стили</strong>
-                            <h3>Жарашыктуу</h3>
-                            <p>Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.</p>
+                            <strong data-i18n="guest2Label">Кийим стили</strong>
+                            <h3 data-i18n="guest2Title">Жарашыктуу</h3>
+                            <p data-i18n="guest2Copy">Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.</p>
                         </article>
                         <article class="guest-note">
-                            <strong>Кошумча конок</strong>
-                            <h3>Санын белгилеңиз</h3>
-                            <p>RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.</p>
+                            <strong data-i18n="guest3Label">Кошумча конок</strong>
+                            <h3 data-i18n="guest3Title">Санын белгилеңиз</h3>
+                            <p data-i18n="guest3Copy">RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.</p>
                         </article>
                         <article class="guest-note">
-                            <strong>Ак бата</strong>
-                            <h3>Эң чоң белек</h3>
-                            <p>Биз үчүн эң кымбаты - сиздин катышууңуз, жакшы тилегиңиз жана ак батаңыз.</p>
+                            <strong data-i18n="guest4Label">Ак бата</strong>
+                            <h3 data-i18n="guest4Title">Эң чоң белек</h3>
+                            <p data-i18n="guest4Copy">Биз үчүн эң кымбаты - сиздин катышууңуз, жакшы тилегиңиз жана ак батаңыз.</p>
                         </article>
                     </div>
                 </div>
@@ -849,47 +894,47 @@
             <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-title">
                 <div class="container rsvp">
                     <div>
-                        <p class="eyebrow">Сизди күтөбүз</p>
-                        <h2 class="section-title" id="rsvp-title">Майрамыбызга катышарыңызды билдирип коюңуз.</h2>
-                        <p class="lead">Форманы толтурсаңыз, жооп WhatsApp аркылуу даяр билдирүү болуп ачылат. Биз конок тизмесин тактап, орундарды алдын ала ыңгайлаштырып алабыз.</p>
+                        <p class="eyebrow" data-i18n="rsvpEyebrow">Сизди күтөбүз</p>
+                        <h2 class="section-title" id="rsvp-title" data-i18n="rsvpTitle">Келериңизди билдирип коюңуз.</h2>
+                        <p class="lead" data-i18n="rsvpLead">Форманы толтурсаңыз, жооп WhatsApp аркылуу даяр билдирүү болуп ачылат. Биз конок тизмесин тактап, орундарды алдын ала ыңгайлаштырып алабыз.</p>
                     </div>
                     <form class="rsvp-form" id="rsvpForm">
                         <div class="form-grid">
                             <div class="form-field">
-                                <label for="guestName">Атыңыз</label>
-                                <input id="guestName" name="guestName" type="text" autocomplete="name" placeholder="Мисалы: Нурбек" required>
+                                <label for="guestName" data-i18n="guestNameLabel">Атыңыз</label>
+                                <input id="guestName" name="guestName" type="text" autocomplete="name" placeholder="Мисалы: Нурбек" data-i18n-placeholder="guestNamePlaceholder" required>
                             </div>
 
                             <div class="form-field">
-                                <span class="radio-label">Катышасызбы?</span>
+                                <span class="radio-label" data-i18n="attendanceLabel">Катышасызбы?</span>
                                 <div class="radio-group">
                                     <label class="radio-option">
-                                        <input type="radio" name="attendance" value="Келем" checked>
-                                        <span>Келем</span>
+                                        <input type="radio" name="attendance" value="yes" checked>
+                                        <span data-i18n="attendanceYes">Келем</span>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="attendance" value="Тилекке каршы келе албайм">
-                                        <span>Келе албайм</span>
+                                        <input type="radio" name="attendance" value="no">
+                                        <span data-i18n="attendanceNo">Келе албайм</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-field">
-                                <label for="guestCount">Канча киши?</label>
+                                <label for="guestCount" data-i18n="guestCountLabel">Канча киши?</label>
                                 <select id="guestCount" name="guestCount">
-                                    <option value="1">1 киши</option>
-                                    <option value="2">2 киши</option>
-                                    <option value="3">3 киши</option>
-                                    <option value="4+">4 же андан көп</option>
+                                    <option value="1" data-i18n="count1">1 киши</option>
+                                    <option value="2" data-i18n="count2">2 киши</option>
+                                    <option value="3" data-i18n="count3">3 киши</option>
+                                    <option value="4+" data-i18n="count4">4 же андан көп</option>
                                 </select>
                             </div>
 
                             <div class="form-field">
-                                <label for="guestNote">Кошумча билдирүү</label>
-                                <textarea id="guestNote" name="guestNote" placeholder="Каалоо-тилек же кошумча маалымат"></textarea>
+                                <label for="guestNote" data-i18n="guestNoteLabel">Кошумча билдирүү</label>
+                                <textarea id="guestNote" name="guestNote" placeholder="Каалоо-тилек же кошумча маалымат" data-i18n-placeholder="guestNotePlaceholder"></textarea>
                             </div>
 
-                            <button class="button button--light" type="submit">WhatsApp аркылуу жөнөтүү</button>
+                            <button class="button button--light" type="submit" data-i18n="rsvpSubmit">WhatsApp аркылуу жөнөтүү</button>
                         </div>
                         <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
@@ -897,12 +942,338 @@
             </section>
         </main>
 
-        <footer class="footer">
+        <footer class="footer" data-i18n="footer">
             Дилмурат &amp; Аида · 15-июль, 2026 · Бишкек
         </footer>
     </div>
 
     <script>
+        const translations = {
+            ky: {
+                htmlLang: "ky",
+                title: "Дилмурат & Аида | Үйлөнүү үлпөтүнө чакыруу",
+                metaDescription: "Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 15-июль, 2026-жыл, саат 18:00, Бишкек.",
+                languageLabel: "Тил",
+                languageSelectLabel: "Тилди тандоо",
+                heroEyebrow: "Үйлөнүү үлпөтүнө чакыруу",
+                heroTitle: "Дилмурат & Аида",
+                heroCopy: "Урматтуу коногубуз, сизди жашообуздагы эң өзгөчө күндү биз менен бирге белгилөөгө чын жүрөктөн чакырабыз.",
+                heroActionsAria: "Негизги аракеттер",
+                heroConfirm: "Келем деп ырастоо",
+                heroDetails: "Маалыматты көрүү",
+                countdownAria: "Тойго чейинки убакыт",
+                timeDays: "Күн",
+                timeHours: "Саат",
+                timeMinutes: "Мүнөт",
+                timeSeconds: "Секунд",
+                introEyebrow: "Сиз биз үчүн кымбатсыз",
+                introTitle: "Жүрөктөр бириккен күндө жаныбызда болуңуз.",
+                introLead: "Бул күн жылуулукка, ак батага жана сүйүнүчкө толсун. Сиздин катышууңуз майрамыбызды дагы да маңыздуу кылат.",
+                dateAria: "Той күнү",
+                dateWeekday: "Шаршемби",
+                dateMonth: "Июль",
+                detailsEyebrow: "Маалымат",
+                detailsTitle: "Тойдун чоо-жайы",
+                detailDateLabel: "Күнү",
+                detailDateTitle: "15-июль, 2026",
+                detailDateCopy: "Шаршемби күнү",
+                detailTimeLabel: "Убактысы",
+                detailTimeTitle: "18:00",
+                detailTimeCopy: "Конокторду тосуу кечки саат алтыда башталат.",
+                detailAddressLabel: "Дареги",
+                detailAddressTitle: "Алтын Ордо",
+                detailAddressCopy: "Бишкек шаары, “Алтын Ордо” рестораны",
+                mapTitle: "Алтын Ордо ресторанынын картасы",
+                venueAria: "Жайгашкан жер",
+                venueLabel: "Жайгашкан жер",
+                venueTitle: "Бишкек, “Алтын Ордо” рестораны",
+                venueCopy: "Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.",
+                openMap: "Картаны ачуу",
+                addCalendar: "Календарга кошуу",
+                guestEyebrow: "Коноктор үчүн",
+                guestTitle: "Келүүңүз ыңгайлуу болсун.",
+                guestLead: "Бир нече майда маалыматты алдын ала билсеңиз, майрамга шашпай жана жайдары маанайда келесиз.",
+                guest1Label: "Келүү убактысы",
+                guest1Title: "17:30дан баштап",
+                guest1Copy: "Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.",
+                guest2Label: "Кийим стили",
+                guest2Title: "Жарашыктуу",
+                guest2Copy: "Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.",
+                guest3Label: "Кошумча конок",
+                guest3Title: "Санын белгилеңиз",
+                guest3Copy: "RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.",
+                guest4Label: "Ак бата",
+                guest4Title: "Эң чоң белек",
+                guest4Copy: "Биз үчүн эң кымбаты - сиздин катышууңуз, жакшы тилегиңиз жана ак батаңыз.",
+                rsvpEyebrow: "Сизди күтөбүз",
+                rsvpTitle: "Келериңизди билдирип коюңуз.",
+                rsvpLead: "Форманы толтурсаңыз, жооп WhatsApp аркылуу даяр билдирүү болуп ачылат. Биз конок тизмесин тактап, орундарды алдын ала ыңгайлаштырып алабыз.",
+                guestNameLabel: "Атыңыз",
+                guestNamePlaceholder: "Мисалы: Нурбек",
+                attendanceLabel: "Катышасызбы?",
+                attendanceYes: "Келем",
+                attendanceNo: "Келе албайм",
+                guestCountLabel: "Канча киши?",
+                count1: "1 киши",
+                count2: "2 киши",
+                count3: "3 киши",
+                count4: "4 же андан көп",
+                guestNoteLabel: "Кошумча билдирүү",
+                guestNotePlaceholder: "Каалоо-тилек же кошумча маалымат",
+                rsvpSubmit: "WhatsApp аркылуу жөнөтүү",
+                footer: "Дилмурат & Аида · 15-июль, 2026 · Бишкек",
+                formErrorName: "Сураныч, атыңызды жазыңыз.",
+                formStatusSent: "WhatsApp ачылды. Билдирүүнү жөнөтүп коюңуз.",
+                whatsappDefault: "Салам! Чакырууну алдым. Кудай буюрса, тойго сөзсүз барабыз!",
+                whatsappGreeting: "Салам! Чакырууну алдым.",
+                messageName: "Атым",
+                messageAttendance: "Жообум",
+                messageCount: "Конок саны",
+                messageNote: "Кошумча",
+                messageThanks: "Рахмат!",
+                calendarSummary: "Дилмурат жана Аиданын үйлөнүү үлпөтү",
+                calendarLocation: "Алтын Ордо рестораны, Бишкек",
+                calendarDescription: "Дилмурат менен Аиданын үйлөнүү үлпөт тою. Башталышы: 18:00."
+            },
+            ru: {
+                htmlLang: "ru",
+                title: "Дилмурат & Аида | Приглашение на свадьбу",
+                metaDescription: "Приглашение на свадьбу Дилмурата и Аиды. 15 июля 2026 года, 18:00, Бишкек.",
+                languageLabel: "Язык",
+                languageSelectLabel: "Выбрать язык",
+                heroEyebrow: "Приглашение на свадьбу",
+                heroTitle: "Дилмурат & Аида",
+                heroCopy: "Дорогой гость, мы с радостью приглашаем вас разделить с нами самый особенный день нашей жизни.",
+                heroActionsAria: "Основные действия",
+                heroConfirm: "Подтвердить участие",
+                heroDetails: "Посмотреть детали",
+                countdownAria: "Время до свадьбы",
+                timeDays: "Дней",
+                timeHours: "Часов",
+                timeMinutes: "Минут",
+                timeSeconds: "Секунд",
+                introEyebrow: "Вы дороги нам",
+                introTitle: "Будьте рядом в день, когда соединяются сердца.",
+                introLead: "Пусть этот день будет наполнен теплом, благословением и радостью. Ваше присутствие сделает наш праздник еще значимее.",
+                dateAria: "Дата свадьбы",
+                dateWeekday: "Среда",
+                dateMonth: "Июль",
+                detailsEyebrow: "Информация",
+                detailsTitle: "Детали торжества",
+                detailDateLabel: "Дата",
+                detailDateTitle: "15 июля 2026",
+                detailDateCopy: "Среда",
+                detailTimeLabel: "Время",
+                detailTimeTitle: "18:00",
+                detailTimeCopy: "Встреча гостей начнется в шесть вечера.",
+                detailAddressLabel: "Адрес",
+                detailAddressTitle: "Алтын Ордо",
+                detailAddressCopy: "г. Бишкек, ресторан “Алтын Ордо”",
+                mapTitle: "Карта ресторана Алтын Ордо",
+                venueAria: "Место проведения",
+                venueLabel: "Место проведения",
+                venueTitle: "Бишкек, ресторан “Алтын Ордо”",
+                venueCopy: "Откройте маршрут на карте или добавьте дату в календарь.",
+                openMap: "Открыть карту",
+                addCalendar: "В календарь",
+                guestEyebrow: "Для гостей",
+                guestTitle: "Чтобы вам было удобно приехать.",
+                guestLead: "Небольшие детали помогут приехать спокойно и с хорошим настроением.",
+                guest1Label: "Время прибытия",
+                guest1Title: "С 17:30",
+                guest1Copy: "Встреча гостей пройдет перед началом торжества. Праздник начнется в 18:00.",
+                guest2Label: "Дресс-код",
+                guest2Title: "Нарядный стиль",
+                guest2Copy: "Выберите праздничный и удобный образ. Светлые, пастельные и классические цвета будут уместны.",
+                guest3Label: "Гости с вами",
+                guest3Title: "Укажите количество",
+                guest3Copy: "В RSVP-форме отметьте, сколько человек будет с вами.",
+                guest4Label: "Добрые пожелания",
+                guest4Title: "Главный подарок",
+                guest4Copy: "Для нас самое ценное - ваше присутствие, добрые слова и благословение.",
+                rsvpEyebrow: "Ждем вас",
+                rsvpTitle: "Подтвердите участие.",
+                rsvpLead: "Заполните форму, и WhatsApp откроется с готовым сообщением. Так мы сможем уточнить список гостей и заранее подготовить места.",
+                guestNameLabel: "Ваше имя",
+                guestNamePlaceholder: "Например: Нурбек",
+                attendanceLabel: "Вы придете?",
+                attendanceYes: "Приду",
+                attendanceNo: "Не смогу прийти",
+                guestCountLabel: "Сколько человек?",
+                count1: "1 человек",
+                count2: "2 человека",
+                count3: "3 человека",
+                count4: "4 или больше",
+                guestNoteLabel: "Дополнительное сообщение",
+                guestNotePlaceholder: "Пожелание или дополнительная информация",
+                rsvpSubmit: "Отправить через WhatsApp",
+                footer: "Дилмурат & Аида · 15 июля 2026 · Бишкек",
+                formErrorName: "Пожалуйста, напишите ваше имя.",
+                formStatusSent: "WhatsApp открылся. Осталось отправить сообщение.",
+                whatsappDefault: "Здравствуйте! Я получил(а) приглашение. Если Бог даст, обязательно будем на свадьбе!",
+                whatsappGreeting: "Здравствуйте! Я получил(а) приглашение.",
+                messageName: "Имя",
+                messageAttendance: "Ответ",
+                messageCount: "Количество гостей",
+                messageNote: "Дополнительно",
+                messageThanks: "Спасибо!",
+                calendarSummary: "Свадьба Дилмурата и Аиды",
+                calendarLocation: "Ресторан Алтын Ордо, Бишкек",
+                calendarDescription: "Свадебное торжество Дилмурата и Аиды. Начало: 18:00."
+            },
+            en: {
+                htmlLang: "en",
+                title: "Dilmurat & Aida | Wedding Invitation",
+                metaDescription: "Wedding invitation for Dilmurat and Aida. July 15, 2026, 6:00 PM, Bishkek.",
+                languageLabel: "Language",
+                languageSelectLabel: "Select language",
+                heroEyebrow: "Wedding invitation",
+                heroTitle: "Dilmurat & Aida",
+                heroCopy: "Dear guest, we warmly invite you to celebrate one of the most special days of our lives with us.",
+                heroActionsAria: "Primary actions",
+                heroConfirm: "Confirm attendance",
+                heroDetails: "View details",
+                countdownAria: "Time until the wedding",
+                timeDays: "Days",
+                timeHours: "Hours",
+                timeMinutes: "Minutes",
+                timeSeconds: "Seconds",
+                introEyebrow: "You are dear to us",
+                introTitle: "Be with us on the day our hearts unite.",
+                introLead: "May this day be filled with warmth, blessings, and joy. Your presence will make our celebration even more meaningful.",
+                dateAria: "Wedding date",
+                dateWeekday: "Wednesday",
+                dateMonth: "July",
+                detailsEyebrow: "Information",
+                detailsTitle: "Wedding details",
+                detailDateLabel: "Date",
+                detailDateTitle: "July 15, 2026",
+                detailDateCopy: "Wednesday",
+                detailTimeLabel: "Time",
+                detailTimeTitle: "6:00 PM",
+                detailTimeCopy: "Guest welcome begins at six in the evening.",
+                detailAddressLabel: "Address",
+                detailAddressTitle: "Altyn Ordo",
+                detailAddressCopy: "Bishkek, Altyn Ordo restaurant",
+                mapTitle: "Map of Altyn Ordo restaurant",
+                venueAria: "Venue",
+                venueLabel: "Venue",
+                venueTitle: "Bishkek, Altyn Ordo restaurant",
+                venueCopy: "Open the route on the map or add the date to your calendar.",
+                openMap: "Open map",
+                addCalendar: "Add to calendar",
+                guestEyebrow: "For guests",
+                guestTitle: "Arrive with ease.",
+                guestLead: "A few helpful details will make it easier to arrive calmly and enjoy the celebration.",
+                guest1Label: "Arrival time",
+                guest1Title: "From 5:30 PM",
+                guest1Copy: "Guests will be welcomed before the celebration begins. The event starts at 6:00 PM.",
+                guest2Label: "Dress style",
+                guest2Title: "Elegant attire",
+                guest2Copy: "Choose something festive and comfortable. Light, pastel, or classic colors will look beautiful.",
+                guest3Label: "Additional guests",
+                guest3Title: "Share the number",
+                guest3Copy: "Please note how many people will come with you in the RSVP form.",
+                guest4Label: "Blessings",
+                guest4Title: "The greatest gift",
+                guest4Copy: "Your presence, kind words, and blessings mean the most to us.",
+                rsvpEyebrow: "We are waiting for you",
+                rsvpTitle: "Let us know you are coming.",
+                rsvpLead: "Fill out the form and WhatsApp will open with a prepared message. This helps us confirm the guest list and prepare seats in advance.",
+                guestNameLabel: "Your name",
+                guestNamePlaceholder: "Example: Nurbek",
+                attendanceLabel: "Will you attend?",
+                attendanceYes: "I will attend",
+                attendanceNo: "I cannot attend",
+                guestCountLabel: "How many guests?",
+                count1: "1 guest",
+                count2: "2 guests",
+                count3: "3 guests",
+                count4: "4 or more",
+                guestNoteLabel: "Additional message",
+                guestNotePlaceholder: "A wish or extra information",
+                rsvpSubmit: "Send via WhatsApp",
+                footer: "Dilmurat & Aida · July 15, 2026 · Bishkek",
+                formErrorName: "Please enter your name.",
+                formStatusSent: "WhatsApp opened. Please send the message.",
+                whatsappDefault: "Hello! I received the invitation. God willing, we will definitely come to the wedding!",
+                whatsappGreeting: "Hello! I received the invitation.",
+                messageName: "Name",
+                messageAttendance: "Response",
+                messageCount: "Guest count",
+                messageNote: "Note",
+                messageThanks: "Thank you!",
+                calendarSummary: "Dilmurat and Aida's wedding",
+                calendarLocation: "Altyn Ordo restaurant, Bishkek",
+                calendarDescription: "Dilmurat and Aida's wedding celebration. Starts at 6:00 PM."
+            }
+        };
+
+        const languageSelect = document.getElementById("languageSelect");
+        const rsvpForm = document.getElementById("rsvpForm");
+        const formStatus = document.getElementById("formStatus");
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const savedLanguage = (() => {
+            try {
+                return localStorage.getItem("weddingLanguage");
+            } catch (error) {
+                return null;
+            }
+        })();
+        let currentLanguage = translations[savedLanguage] ? savedLanguage : "ky";
+
+        function getText(key) {
+            return translations[currentLanguage][key] || translations.ky[key] || "";
+        }
+
+        function applyTranslations(language) {
+            currentLanguage = translations[language] ? language : "ky";
+            const current = translations[currentLanguage];
+
+            document.documentElement.lang = current.htmlLang;
+            document.title = current.title;
+            if (metaDescription) metaDescription.setAttribute("content", current.metaDescription);
+
+            document.querySelectorAll("[data-i18n]").forEach((element) => {
+                const value = current[element.dataset.i18n];
+                if (value) element.textContent = value;
+            });
+
+            document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+                const value = current[element.dataset.i18nPlaceholder];
+                if (value) element.setAttribute("placeholder", value);
+            });
+
+            document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+                const value = current[element.dataset.i18nTitle];
+                if (value) element.setAttribute("title", value);
+            });
+
+            document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+                const value = current[element.dataset.i18nAria];
+                if (value) element.setAttribute("aria-label", value);
+            });
+
+            if (languageSelect) {
+                languageSelect.value = currentLanguage;
+                languageSelect.setAttribute("aria-label", current.languageSelectLabel);
+            }
+
+            if (formStatus) formStatus.textContent = "";
+
+            try {
+                localStorage.setItem("weddingLanguage", currentLanguage);
+            } catch (error) {
+                // Local files can block storage in some browsers; the selector still works.
+            }
+        }
+
+        languageSelect.addEventListener("change", (event) => {
+            applyTranslations(event.target.value);
+        });
+
+        applyTranslations(currentLanguage);
+
         const weddingDate = new Date("2026-07-15T18:00:00+06:00").getTime();
         const countdownElements = {
             days: document.getElementById("days"),
@@ -937,38 +1308,36 @@
 
         function sendWhatsApp(message) {
             const phoneNumber = "996704251571";
-            const text = message || "Салам! Чакырууну алдым. Кудай буюрса, тойго сөзсүз барабыз!";
+            const text = message || getText("whatsappDefault");
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
         }
-
-        const rsvpForm = document.getElementById("rsvpForm");
-        const formStatus = document.getElementById("formStatus");
 
         rsvpForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
             const formData = new FormData(rsvpForm);
             const guestName = String(formData.get("guestName") || "").trim();
-            const attendance = String(formData.get("attendance") || "Келем");
+            const attendanceKey = String(formData.get("attendance") || "yes") === "no" ? "attendanceNo" : "attendanceYes";
             const guestCount = String(formData.get("guestCount") || "1");
             const guestNote = String(formData.get("guestNote") || "").trim();
+            const countKey = guestCount === "4+" ? "count4" : `count${guestCount}`;
 
             if (!guestName) {
-                formStatus.textContent = "Сураныч, атыңызды жазыңыз.";
+                formStatus.textContent = getText("formErrorName");
                 document.getElementById("guestName").focus();
                 return;
             }
 
             const message = [
-                "Салам! Чакырууну алдым.",
-                `Атым: ${guestName}`,
-                `Жообум: ${attendance}`,
-                `Конок саны: ${guestCount}`,
-                guestNote ? `Кошумча: ${guestNote}` : "",
-                "Рахмат!"
+                getText("whatsappGreeting"),
+                `${getText("messageName")}: ${guestName}`,
+                `${getText("messageAttendance")}: ${getText(attendanceKey)}`,
+                `${getText("messageCount")}: ${getText(countKey)}`,
+                guestNote ? `${getText("messageNote")}: ${guestNote}` : "",
+                getText("messageThanks")
             ].filter(Boolean).join("\n");
 
-            formStatus.textContent = "WhatsApp ачылды. Билдирүүнү жөнөтүп коюңуз.";
+            formStatus.textContent = getText("formStatusSent");
             sendWhatsApp(message);
         });
 
@@ -982,9 +1351,9 @@
                 "DTSTAMP:20260612T000000Z",
                 "DTSTART:20260715T120000Z",
                 "DTEND:20260715T180000Z",
-                "SUMMARY:Дилмурат жана Аиданын үйлөнүү үлпөтү",
-                "LOCATION:Алтын Ордо рестораны, Бишкек",
-                "DESCRIPTION:Дилмурат менен Аиданын үйлөнүү үлпөт тою. Башталышы: 18:00.",
+                `SUMMARY:${getText("calendarSummary")}`,
+                `LOCATION:${getText("calendarLocation")}`,
+                `DESCRIPTION:${getText("calendarDescription")}`,
                 "END:VEVENT",
                 "END:VCALENDAR"
             ].join("\r\n");
