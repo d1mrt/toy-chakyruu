@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 15-июль, 2026-жыл, саат 18:00, Бишкек.">
+    <meta name="description" content="Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 25-июль, 2026-жыл, саат 17:00, Бишкек.">
     <title>Дилмурат &amp; Аида | Үйлөнүү үлпөтүнө чакыруу</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,6 +127,38 @@
 
         .welcome-screen.is-opening::before {
             animation: coverOpen 1100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .welcome-language {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(10, 18, 18, 0.46);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(14px);
+        }
+
+        .welcome-language label {
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.78rem;
+            font-weight: 900;
+        }
+
+        .welcome-language select {
+            border: 0;
+            border-radius: 6px;
+            padding: 7px 28px 7px 10px;
+            color: var(--ink);
+            background: var(--white);
+            font-weight: 900;
+            outline: none;
         }
 
         .welcome-content {
@@ -580,6 +612,73 @@
             border: 0;
         }
 
+        .map-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 360px;
+            height: 100%;
+            padding: 28px;
+            color: var(--white);
+            background:
+                linear-gradient(180deg, rgba(32, 36, 43, 0.1), rgba(32, 36, 43, 0.78)),
+                linear-gradient(135deg, #1f6f58, #26323a 58%, #a76d46);
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .map-card::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .map-card__badge {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: var(--ink);
+            background: var(--white);
+            font-weight: 900;
+        }
+
+        .map-card strong {
+            position: relative;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2.8rem;
+            line-height: 0.98;
+        }
+
+        .map-card p,
+        .map-card__button {
+            position: relative;
+        }
+
+        .map-card p {
+            max-width: 420px;
+            margin: 12px 0 0;
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .map-card__button {
+            align-self: flex-start;
+            margin-top: 22px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--white);
+            background: var(--sage);
+            font-weight: 900;
+        }
+
         .venue-panel {
             display: flex;
             flex-direction: column;
@@ -857,6 +956,26 @@
                 padding: 20px;
             }
 
+            .welcome-language {
+                top: 14px;
+                left: 20px;
+                right: 20px;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 8px;
+            }
+
+            .welcome-language label {
+                font-size: 0.72rem;
+            }
+
+            .welcome-language select {
+                flex: 1;
+                min-width: 0;
+                max-width: 190px;
+                padding: 8px 28px 8px 11px;
+            }
+
             .welcome-screen::before {
                 background:
                     linear-gradient(180deg, rgba(8, 16, 17, 0.78), rgba(8, 16, 17, 0.62)),
@@ -1011,6 +1130,24 @@
                 min-height: 300px;
             }
 
+            .map-card {
+                min-height: 300px;
+                padding: 22px;
+            }
+
+            .map-card::before {
+                inset: 14px;
+            }
+
+            .map-card__badge {
+                top: 22px;
+                left: 22px;
+            }
+
+            .map-card strong {
+                font-size: 2.35rem;
+            }
+
             .petals {
                 display: none;
             }
@@ -1042,12 +1179,20 @@
 </head>
 <body class="intro-locked">
     <section class="welcome-screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
+        <div class="welcome-language">
+            <label for="welcomeLanguageSelect" data-i18n="languageLabel">Тил</label>
+            <select id="welcomeLanguageSelect" aria-label="Тилди тандоо">
+                <option value="ky">Кыргызча</option>
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+            </select>
+        </div>
         <div class="welcome-content">
-            <p class="welcome-kicker">Үйлөнүү үлпөтүнө чакыруу</p>
-            <h2 class="welcome-title" id="welcomeTitle">Дилмурат &amp; Аида</h2>
-            <p class="welcome-date">15-июль, 2026</p>
-            <button class="welcome-button" id="openInvitation" type="button" aria-label="Той чакыруусун ачуу">
-                <span>Кируу</span>
+            <p class="welcome-kicker" data-i18n="welcomeKicker">Үйлөнүү үлпөтүнө чакыруу</p>
+            <h2 class="welcome-title" id="welcomeTitle" data-i18n="welcomeTitle">Дилмурат &amp; Аида</h2>
+            <p class="welcome-date" data-i18n="welcomeDate">25-июль, 2026</p>
+            <button class="welcome-button" id="openInvitation" type="button" aria-label="Той чакыруусун ачуу" data-i18n-aria="welcomeButtonAria">
+                <span data-i18n="welcomeButton">Чакырууну басыныз</span>
             </button>
             <div class="welcome-flourish" aria-hidden="true">
                 <span></span>
@@ -1102,7 +1247,7 @@
                         <div class="date-mark__top" data-i18n="dateWeekday">Шаршемби</div>
                         <div class="date-mark__body">
                             <span data-i18n="dateMonth">Июль</span>
-                            <strong>15</strong>
+                            <strong>25</strong>
                             <span>2026</span>
                         </div>
                     </div>
@@ -1116,33 +1261,38 @@
                     <div class="detail-grid">
                         <article class="detail-card">
                             <p class="detail-card__label" data-i18n="detailDateLabel">Күнү</p>
-                            <h3 data-i18n="detailDateTitle">15-июль, 2026</h3>
+                            <h3 data-i18n="detailDateTitle">25-июль, 2026</h3>
                             <p data-i18n="detailDateCopy">Шаршемби күнү</p>
                         </article>
                         <article class="detail-card">
                             <p class="detail-card__label" data-i18n="detailTimeLabel">Убактысы</p>
-                            <h3 data-i18n="detailTimeTitle">18:00</h3>
+                            <h3 data-i18n="detailTimeTitle">17:00</h3>
                             <p data-i18n="detailTimeCopy">Конокторду тосуу кечки саат алтыда башталат.</p>
                         </article>
                         <article class="detail-card">
                             <p class="detail-card__label" data-i18n="detailAddressLabel">Дареги</p>
-                            <h3 data-i18n="detailAddressTitle">Алтын Ордо</h3>
-                            <p data-i18n="detailAddressCopy">Бишкек шаары, “Алтын Ордо” рестораны</p>
+                            <h3 data-i18n="detailAddressTitle">Cafe Ырыскы</h3>
+                            <p data-i18n="detailAddressCopy">Бишкек шаары, “Ырыскы” кафеси</p>
                         </article>
                     </div>
 
                     <div class="venue">
                         <div class="map">
-                            <iframe title="Алтын Ордо ресторанынын картасы" data-i18n-title="mapTitle" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.3942361730073!2d74.6312450765955!3d42.86450120306764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6344f6760cf%3A0x6bda19097893f4e2!2z0KDQtdGB0YLQvtGA0LDQvCAi0JDQu9GC0YvQvSDQntGA0LTQviI!5e0!3m2!1sru!2skg!4v1717580000000!5m2!1sru!2skg" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a class="map-card" href="https://2gis.kg/bishkek/search/Cafe%20%D0%AB%D1%80%D1%8B%D1%81%D0%BA%D1%8B/firm/70000001090667448/74.480445%2C42.8744?m=74.480655%2C42.874331%2F19.48" target="_blank" rel="noopener" aria-label="Ырыскы кафесин 2GISтен ачуу" data-i18n-aria="mapCardAria">
+                                <span class="map-card__badge">2GIS</span>
+                                <strong data-i18n="mapCardTitle">Cafe Ырыскы</strong>
+                                <p data-i18n="mapCardCopy">Жайгашкан жерди 2GIS аркылуу ачып, жолду ыңгайлуу пландаңыз.</p>
+                                <span class="map-card__button" data-i18n="mapCardButton">2GIS карта ачуу</span>
+                            </a>
                         </div>
                         <aside class="venue-panel" aria-label="Жайгашкан жер" data-i18n-aria="venueAria">
                             <div>
                                 <p class="detail-card__label" data-i18n="venueLabel">Жайгашкан жер</p>
-                                <h3 data-i18n="venueTitle">Бишкек, “Алтын Ордо” рестораны</h3>
+                                <h3 data-i18n="venueTitle">Бишкек, “Ырыскы” кафеси</h3>
                                 <p data-i18n="venueCopy">Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.</p>
                             </div>
                             <div class="section__actions">
-                                <a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=42.86450120306764,74.6312450765955" target="_blank" rel="noopener" data-i18n="openMap">Картаны ачуу</a>
+                                <a class="button button--primary" href="https://2gis.kg/bishkek/search/Cafe%20%D0%AB%D1%80%D1%8B%D1%81%D0%BA%D1%8B/firm/70000001090667448/74.480445%2C42.8744?m=74.480655%2C42.874331%2F19.48" target="_blank" rel="noopener" data-i18n="openMap">Картаны ачуу</a>
                                 <button class="button button--light" type="button" onclick="downloadCalendar()" data-i18n="addCalendar">Календарга кошуу</button>
                             </div>
                         </aside>
@@ -1159,18 +1309,13 @@
                     <div class="guest-grid">
                         <article class="guest-note">
                             <strong data-i18n="guest1Label">Келүү убактысы</strong>
-                            <h3 data-i18n="guest1Title">17:30дан баштап</h3>
-                            <p data-i18n="guest1Copy">Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.</p>
+                            <h3 data-i18n="guest1Title">16:30дан баштап</h3>
+                            <p data-i18n="guest1Copy">Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 17:00дө башталат.</p>
                         </article>
                         <article class="guest-note">
                             <strong data-i18n="guest2Label">Кийим стили</strong>
                             <h3 data-i18n="guest2Title">Жарашыктуу</h3>
                             <p data-i18n="guest2Copy">Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.</p>
-                        </article>
-                        <article class="guest-note">
-                            <strong data-i18n="guest3Label">Кошумча конок</strong>
-                            <h3 data-i18n="guest3Title">Санын белгилеңиз</h3>
-                            <p data-i18n="guest3Copy">RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.</p>
                         </article>
                         <article class="guest-note">
                             <strong data-i18n="guest4Label">Ак бата</strong>
@@ -1233,7 +1378,7 @@
         </main>
 
         <footer class="footer" data-i18n="footer">
-            Дилмурат &amp; Аида · 15-июль, 2026 · Бишкек
+            Дилмурат &amp; Аида · 25-июль, 2026 · Бишкек
         </footer>
     </div>
 
@@ -1242,9 +1387,14 @@
             ky: {
                 htmlLang: "ky",
                 title: "Дилмурат & Аида | Үйлөнүү үлпөтүнө чакыруу",
-                metaDescription: "Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 15-июль, 2026-жыл, саат 18:00, Бишкек.",
+                metaDescription: "Дилмурат менен Аиданын үйлөнүү үлпөтүнө чакыруу. 25-июль, 2026-жыл, саат 17:00, Бишкек.",
                 languageLabel: "Тил",
                 languageSelectLabel: "Тилди тандоо",
+                welcomeKicker: "Үйлөнүү үлпөтүнө чакыруу",
+                welcomeTitle: "Дилмурат & Аида",
+                welcomeDate: "25-июль, 2026",
+                welcomeButton: "Чакырууну басыныз",
+                welcomeButtonAria: "Той чакыруусун ачуу",
                 heroEyebrow: "Үйлөнүү үлпөтүнө чакыруу",
                 heroTitle: "Дилмурат & Аида",
                 heroCopy: "Урматтуу коногубуз, сизди жашообуздагы эң өзгөчө күндү биз менен бирге белгилөөгө чын жүрөктөн чакырабыз.",
@@ -1265,18 +1415,22 @@
                 detailsEyebrow: "Маалымат",
                 detailsTitle: "Тойдун чоо-жайы",
                 detailDateLabel: "Күнү",
-                detailDateTitle: "15-июль, 2026",
+                detailDateTitle: "25-июль, 2026",
                 detailDateCopy: "Шаршемби күнү",
                 detailTimeLabel: "Убактысы",
-                detailTimeTitle: "18:00",
-                detailTimeCopy: "Конокторду тосуу кечки саат алтыда башталат.",
+                detailTimeTitle: "17:00",
+                detailTimeCopy: "Салтанат саат 17:00дө башталат.",
                 detailAddressLabel: "Дареги",
-                detailAddressTitle: "Алтын Ордо",
-                detailAddressCopy: "Бишкек шаары, “Алтын Ордо” рестораны",
-                mapTitle: "Алтын Ордо ресторанынын картасы",
+                detailAddressTitle: "Cafe Ырыскы",
+                detailAddressCopy: "Бишкек шаары, “Ырыскы” кафеси",
+                mapTitle: "Ырыскы кафесинин 2GIS картасы",
+                mapCardAria: "Ырыскы кафесин 2GISтен ачуу",
+                mapCardTitle: "Cafe Ырыскы",
+                mapCardCopy: "Жайгашкан жерди 2GIS аркылуу ачып, жолду ыңгайлуу пландаңыз.",
+                mapCardButton: "2GIS карта ачуу",
                 venueAria: "Жайгашкан жер",
                 venueLabel: "Жайгашкан жер",
-                venueTitle: "Бишкек, “Алтын Ордо” рестораны",
+                venueTitle: "Бишкек, “Ырыскы” кафеси",
                 venueCopy: "Карта аркылуу жолду ачып алыңыз же күндү календарыңызга кошуп коюңуз.",
                 openMap: "Картаны ачуу",
                 addCalendar: "Календарга кошуу",
@@ -1284,14 +1438,11 @@
                 guestTitle: "Келүүңүз ыңгайлуу болсун.",
                 guestLead: "Бир нече майда маалыматты алдын ала билсеңиз, майрамга шашпай жана жайдары маанайда келесиз.",
                 guest1Label: "Келүү убактысы",
-                guest1Title: "17:30дан баштап",
-                guest1Copy: "Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 18:00дө башталат.",
+                guest1Title: "16:30дан баштап",
+                guest1Copy: "Конокторду тосуп алуу той башталар алдында болот. Салтанат саат 17:00дө башталат.",
                 guest2Label: "Кийим стили",
                 guest2Title: "Жарашыктуу",
                 guest2Copy: "Майрамдык, ыңгайлуу кийим тандаңыз. Ачык, пастел же классикалык түстөр сонун жарашат.",
-                guest3Label: "Кошумча конок",
-                guest3Title: "Санын белгилеңиз",
-                guest3Copy: "RSVP формасында өзүңүз менен канча киши келерин жазып коюңуз.",
                 guest4Label: "Ак бата",
                 guest4Title: "Эң чоң белек",
                 guest4Copy: "Биз үчүн эң кымбаты - сиздин катышууңуз, жакшы тилегиңиз жана ак батаңыз.",
@@ -1311,7 +1462,7 @@
                 guestNoteLabel: "Кошумча билдирүү",
                 guestNotePlaceholder: "Каалоо-тилек же кошумча маалымат",
                 rsvpSubmit: "WhatsApp аркылуу жөнөтүү",
-                footer: "Дилмурат & Аида · 15-июль, 2026 · Бишкек",
+                footer: "Дилмурат & Аида · 25-июль, 2026 · Бишкек",
                 formErrorName: "Сураныч, атыңызды жазыңыз.",
                 formStatusSent: "WhatsApp ачылды. Билдирүүнү жөнөтүп коюңуз.",
                 whatsappDefault: "Салам! Чакырууну алдым. Кудай буюрса, тойго сөзсүз барабыз!",
@@ -1322,15 +1473,20 @@
                 messageNote: "Кошумча",
                 messageThanks: "Рахмат!",
                 calendarSummary: "Дилмурат жана Аиданын үйлөнүү үлпөтү",
-                calendarLocation: "Алтын Ордо рестораны, Бишкек",
-                calendarDescription: "Дилмурат менен Аиданын үйлөнүү үлпөт тою. Башталышы: 18:00."
+                calendarLocation: "Ырыскы кафеси, Бишкек",
+                calendarDescription: "Дилмурат менен Аиданын үйлөнүү үлпөт тою. Башталышы: 17:00."
             },
             ru: {
                 htmlLang: "ru",
                 title: "Дилмурат & Аида | Приглашение на свадьбу",
-                metaDescription: "Приглашение на свадьбу Дилмурата и Аиды. 15 июля 2026 года, 18:00, Бишкек.",
+                metaDescription: "Приглашение на свадьбу Дилмурата и Аиды. 25 июля 2026 года, 17:00, Бишкек.",
                 languageLabel: "Язык",
                 languageSelectLabel: "Выбрать язык",
+                welcomeKicker: "Приглашение на свадьбу",
+                welcomeTitle: "Дилмурат & Аида",
+                welcomeDate: "25 июля 2026",
+                welcomeButton: "Открыть приглашение",
+                welcomeButtonAria: "Открыть свадебное приглашение",
                 heroEyebrow: "Приглашение на свадьбу",
                 heroTitle: "Дилмурат & Аида",
                 heroCopy: "Дорогой гость, мы с радостью приглашаем вас разделить с нами самый особенный день нашей жизни.",
@@ -1351,18 +1507,22 @@
                 detailsEyebrow: "Информация",
                 detailsTitle: "Детали торжества",
                 detailDateLabel: "Дата",
-                detailDateTitle: "15 июля 2026",
+                detailDateTitle: "25 июля 2026",
                 detailDateCopy: "Среда",
                 detailTimeLabel: "Время",
-                detailTimeTitle: "18:00",
-                detailTimeCopy: "Встреча гостей начнется в шесть вечера.",
+                detailTimeTitle: "17:00",
+                detailTimeCopy: "Торжество начнется в 17:00.",
                 detailAddressLabel: "Адрес",
-                detailAddressTitle: "Алтын Ордо",
-                detailAddressCopy: "г. Бишкек, ресторан “Алтын Ордо”",
-                mapTitle: "Карта ресторана Алтын Ордо",
+                detailAddressTitle: "Cafe Ырыскы",
+                detailAddressCopy: "г. Бишкек, кафе “Ырыскы”",
+                mapTitle: "2GIS карта кафе Ырыскы",
+                mapCardAria: "Открыть кафе Ырыскы в 2GIS",
+                mapCardTitle: "Cafe Ырыскы",
+                mapCardCopy: "Откройте место в 2GIS и удобно спланируйте маршрут.",
+                mapCardButton: "Открыть 2GIS карту",
                 venueAria: "Место проведения",
                 venueLabel: "Место проведения",
-                venueTitle: "Бишкек, ресторан “Алтын Ордо”",
+                venueTitle: "Бишкек, кафе “Ырыскы”",
                 venueCopy: "Откройте маршрут на карте или добавьте дату в календарь.",
                 openMap: "Открыть карту",
                 addCalendar: "В календарь",
@@ -1370,14 +1530,11 @@
                 guestTitle: "Чтобы вам было удобно приехать.",
                 guestLead: "Небольшие детали помогут приехать спокойно и с хорошим настроением.",
                 guest1Label: "Время прибытия",
-                guest1Title: "С 17:30",
-                guest1Copy: "Встреча гостей пройдет перед началом торжества. Праздник начнется в 18:00.",
+                guest1Title: "С 16:30",
+                guest1Copy: "Встреча гостей пройдет перед началом торжества. Праздник начнется в 17:00.",
                 guest2Label: "Дресс-код",
                 guest2Title: "Нарядный стиль",
                 guest2Copy: "Выберите праздничный и удобный образ. Светлые, пастельные и классические цвета будут уместны.",
-                guest3Label: "Гости с вами",
-                guest3Title: "Укажите количество",
-                guest3Copy: "В RSVP-форме отметьте, сколько человек будет с вами.",
                 guest4Label: "Добрые пожелания",
                 guest4Title: "Главный подарок",
                 guest4Copy: "Для нас самое ценное - ваше присутствие, добрые слова и благословение.",
@@ -1397,7 +1554,7 @@
                 guestNoteLabel: "Дополнительное сообщение",
                 guestNotePlaceholder: "Пожелание или дополнительная информация",
                 rsvpSubmit: "Отправить через WhatsApp",
-                footer: "Дилмурат & Аида · 15 июля 2026 · Бишкек",
+                footer: "Дилмурат & Аида · 25 июля 2026 · Бишкек",
                 formErrorName: "Пожалуйста, напишите ваше имя.",
                 formStatusSent: "WhatsApp открылся. Осталось отправить сообщение.",
                 whatsappDefault: "Здравствуйте! Я получил(а) приглашение. Если Бог даст, обязательно будем на свадьбе!",
@@ -1408,15 +1565,20 @@
                 messageNote: "Дополнительно",
                 messageThanks: "Спасибо!",
                 calendarSummary: "Свадьба Дилмурата и Аиды",
-                calendarLocation: "Ресторан Алтын Ордо, Бишкек",
-                calendarDescription: "Свадебное торжество Дилмурата и Аиды. Начало: 18:00."
+                calendarLocation: "Кафе Ырыскы, Бишкек",
+                calendarDescription: "Свадебное торжество Дилмурата и Аиды. Начало: 17:00."
             },
             en: {
                 htmlLang: "en",
                 title: "Dilmurat & Aida | Wedding Invitation",
-                metaDescription: "Wedding invitation for Dilmurat and Aida. July 15, 2026, 6:00 PM, Bishkek.",
+                metaDescription: "Wedding invitation for Dilmurat and Aida. July 25, 2026, 5:00 PM, Bishkek.",
                 languageLabel: "Language",
                 languageSelectLabel: "Select language",
+                welcomeKicker: "Wedding invitation",
+                welcomeTitle: "Dilmurat & Aida",
+                welcomeDate: "July 25, 2026",
+                welcomeButton: "Open invitation",
+                welcomeButtonAria: "Open wedding invitation",
                 heroEyebrow: "Wedding invitation",
                 heroTitle: "Dilmurat & Aida",
                 heroCopy: "Dear guest, we warmly invite you to celebrate one of the most special days of our lives with us.",
@@ -1437,18 +1599,22 @@
                 detailsEyebrow: "Information",
                 detailsTitle: "Wedding details",
                 detailDateLabel: "Date",
-                detailDateTitle: "July 15, 2026",
+                detailDateTitle: "July 25, 2026",
                 detailDateCopy: "Wednesday",
                 detailTimeLabel: "Time",
-                detailTimeTitle: "6:00 PM",
-                detailTimeCopy: "Guest welcome begins at six in the evening.",
+                detailTimeTitle: "5:00 PM",
+                detailTimeCopy: "The celebration starts at 5:00 PM.",
                 detailAddressLabel: "Address",
-                detailAddressTitle: "Altyn Ordo",
-                detailAddressCopy: "Bishkek, Altyn Ordo restaurant",
-                mapTitle: "Map of Altyn Ordo restaurant",
+                detailAddressTitle: "Cafe Yrysky",
+                detailAddressCopy: "Bishkek, Cafe Yrysky",
+                mapTitle: "2GIS map of Cafe Yrysky",
+                mapCardAria: "Open Cafe Yrysky in 2GIS",
+                mapCardTitle: "Cafe Yrysky",
+                mapCardCopy: "Open the venue in 2GIS and plan your route easily.",
+                mapCardButton: "Open 2GIS map",
                 venueAria: "Venue",
                 venueLabel: "Venue",
-                venueTitle: "Bishkek, Altyn Ordo restaurant",
+                venueTitle: "Bishkek, Cafe Yrysky",
                 venueCopy: "Open the route on the map or add the date to your calendar.",
                 openMap: "Open map",
                 addCalendar: "Add to calendar",
@@ -1456,14 +1622,11 @@
                 guestTitle: "Arrive with ease.",
                 guestLead: "A few helpful details will make it easier to arrive calmly and enjoy the celebration.",
                 guest1Label: "Arrival time",
-                guest1Title: "From 5:30 PM",
-                guest1Copy: "Guests will be welcomed before the celebration begins. The event starts at 6:00 PM.",
+                guest1Title: "From 4:30 PM",
+                guest1Copy: "Guests will be welcomed before the celebration begins. The event starts at 5:00 PM.",
                 guest2Label: "Dress style",
                 guest2Title: "Elegant attire",
                 guest2Copy: "Choose something festive and comfortable. Light, pastel, or classic colors will look beautiful.",
-                guest3Label: "Additional guests",
-                guest3Title: "Share the number",
-                guest3Copy: "Please note how many people will come with you in the RSVP form.",
                 guest4Label: "Blessings",
                 guest4Title: "The greatest gift",
                 guest4Copy: "Your presence, kind words, and blessings mean the most to us.",
@@ -1483,7 +1646,7 @@
                 guestNoteLabel: "Additional message",
                 guestNotePlaceholder: "A wish or extra information",
                 rsvpSubmit: "Send via WhatsApp",
-                footer: "Dilmurat & Aida · July 15, 2026 · Bishkek",
+                footer: "Dilmurat & Aida · July 25, 2026 · Bishkek",
                 formErrorName: "Please enter your name.",
                 formStatusSent: "WhatsApp opened. Please send the message.",
                 whatsappDefault: "Hello! I received the invitation. God willing, we will definitely come to the wedding!",
@@ -1494,25 +1657,20 @@
                 messageNote: "Note",
                 messageThanks: "Thank you!",
                 calendarSummary: "Dilmurat and Aida's wedding",
-                calendarLocation: "Altyn Ordo restaurant, Bishkek",
-                calendarDescription: "Dilmurat and Aida's wedding celebration. Starts at 6:00 PM."
+                calendarLocation: "Cafe Yrysky, Bishkek",
+                calendarDescription: "Dilmurat and Aida's wedding celebration. Starts at 5:00 PM."
             }
         };
 
+        const languageSelects = Array.from(document.querySelectorAll("#welcomeLanguageSelect, #languageSelect"));
         const languageSelect = document.getElementById("languageSelect");
+        const welcomeLanguageSelect = document.getElementById("welcomeLanguageSelect");
         const rsvpForm = document.getElementById("rsvpForm");
         const formStatus = document.getElementById("formStatus");
         const welcomeScreen = document.getElementById("welcomeScreen");
         const openInvitationButton = document.getElementById("openInvitation");
         const metaDescription = document.querySelector('meta[name="description"]');
-        const savedLanguage = (() => {
-            try {
-                return localStorage.getItem("weddingLanguage");
-            } catch (error) {
-                return null;
-            }
-        })();
-        let currentLanguage = translations[savedLanguage] ? savedLanguage : "ky";
+        let currentLanguage = "ky";
 
         function getText(key) {
             return translations[currentLanguage][key] || translations.ky[key] || "";
@@ -1546,10 +1704,10 @@
                 if (value) element.setAttribute("aria-label", value);
             });
 
-            if (languageSelect) {
-                languageSelect.value = currentLanguage;
-                languageSelect.setAttribute("aria-label", current.languageSelectLabel);
-            }
+            languageSelects.forEach((select) => {
+                select.value = currentLanguage;
+                select.setAttribute("aria-label", current.languageSelectLabel);
+            });
 
             if (formStatus) formStatus.textContent = "";
 
@@ -1560,8 +1718,10 @@
             }
         }
 
-        languageSelect.addEventListener("change", (event) => {
-            applyTranslations(event.target.value);
+        languageSelects.forEach((select) => {
+            select.addEventListener("change", (event) => {
+                applyTranslations(event.target.value);
+            });
         });
 
         applyTranslations(currentLanguage);
@@ -1580,7 +1740,7 @@
 
         openInvitationButton.addEventListener("click", openInvitation);
 
-        const weddingDate = new Date("2026-07-15T18:00:00+06:00").getTime();
+        const weddingDate = new Date("2026-07-25T17:00:00+06:00").getTime();
         const countdownElements = {
             days: document.getElementById("days"),
             hours: document.getElementById("hours"),
@@ -1653,10 +1813,10 @@
                 "VERSION:2.0",
                 "PRODID:-//Dilmurat and Aida Wedding//KY",
                 "BEGIN:VEVENT",
-                "UID:dilmurat-aida-wedding-20260715@wedding.local",
-                "DTSTAMP:20260612T000000Z",
-                "DTSTART:20260715T120000Z",
-                "DTEND:20260715T180000Z",
+                "UID:dilmurat-aida-wedding-20260725@wedding.local",
+                "DTSTAMP:20260615T000000Z",
+                "DTSTART:20260725T110000Z",
+                "DTEND:20260725T170000Z",
                 `SUMMARY:${getText("calendarSummary")}`,
                 `LOCATION:${getText("calendarLocation")}`,
                 `DESCRIPTION:${getText("calendarDescription")}`,
