@@ -435,10 +435,11 @@
             max-width: 760px;
             margin: 0;
             font-family: var(--script-font);
-            font-size: clamp(4.35rem, 7.4vw, 5.15rem);
-            line-height: 0.96;
+            font-size: clamp(3.95rem, 6.9vw, 4.75rem);
+            line-height: 1.18;
             font-weight: 600;
-            letter-spacing: 0;
+            letter-spacing: 0.035em;
+            word-spacing: 0.08em;
             color: #7899b4;
             text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
             text-wrap: balance;
@@ -1353,7 +1354,8 @@
             }
 
             .hero h1 {
-                font-size: 4.55rem;
+                font-size: 4.25rem;
+                line-height: 1.18;
             }
 
             .intro,
@@ -1397,16 +1399,6 @@
                 width: 34px;
                 height: 34px;
                 font-size: 0.78rem;
-            }
-
-            .copy-link-button {
-                width: 42px;
-                height: 42px;
-            }
-
-            .copy-status {
-                bottom: 18px;
-                border-radius: 8px;
             }
 
             .welcome-screen::before {
@@ -1465,8 +1457,8 @@
             }
 
             .hero h1 {
-                font-size: clamp(2.8rem, 13vw, 3.35rem);
-                line-height: 0.94;
+                font-size: clamp(2.48rem, 11.2vw, 2.95rem);
+                line-height: 1.2;
             }
 
             .hero__copy,
@@ -1688,7 +1680,6 @@
 
         :where(
             .language-pill button,
-            .copy-status,
             .welcome-kicker,
             .welcome-title,
             .welcome-date,
@@ -1725,14 +1716,7 @@
                 <button type="button" class="is-active" data-language-option="ky" data-i18n-aria="languageKyAria" aria-pressed="true">KG</button>
                 <button type="button" data-language-option="ru" data-i18n-aria="languageRuAria" aria-pressed="false">RU</button>
                 <button type="button" data-language-option="en" data-i18n-aria="languageEnAria" aria-pressed="false">EN</button>
-                <button type="button" data-language-option="tr" data-i18n-aria="languageTrAria" aria-pressed="false">TR</button>
             </div>
-            <button class="copy-link-button" type="button" data-copy-link aria-label="Шилтемени көчүрүү" title="Шилтемени көчүрүү" data-i18n-aria="copyLinkAria" data-i18n-title="copyLinkTitle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                    <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
-                    <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
-                </svg>
-            </button>
         </div>
         <div class="welcome-content">
             <p class="welcome-kicker" data-i18n="welcomeKicker">Үйлөнүү үлпөтүнө чакыруу</p>
@@ -1748,9 +1732,7 @@
         </div>
     </section>
 
-    <div class="copy-status" id="copyStatus" role="status" aria-live="polite"></div>
-
-    <header class="site-header" aria-label="Language and share controls">
+    <header class="site-header" aria-label="Language controls">
         <div class="site-header__inner">
             <div class="share-toolbar header-share-toolbar hero-share-toolbar">
                 <div class="language-pill" data-language-control aria-label="Language selection">
@@ -1775,14 +1757,7 @@
                         <button type="button" class="is-active" data-language-option="ky" data-i18n-aria="languageKyAria" aria-pressed="true">KG</button>
                         <button type="button" data-language-option="ru" data-i18n-aria="languageRuAria" aria-pressed="false">RU</button>
                         <button type="button" data-language-option="en" data-i18n-aria="languageEnAria" aria-pressed="false">EN</button>
-                        <button type="button" data-language-option="tr" data-i18n-aria="languageTrAria" aria-pressed="false">TR</button>
                     </div>
-                    <button class="copy-link-button" type="button" data-copy-link aria-label="Шилтемени көчүрүү" title="Шилтемени көчүрүү" data-i18n-aria="copyLinkAria" data-i18n-title="copyLinkTitle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                            <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
-                            <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
-                        </svg>
-                    </button>
                 </div>
                 <div class="hero__inner">
                     <div>
@@ -1931,11 +1906,6 @@
                 languageKyAria: "Кыргыз тилин тандоо",
                 languageRuAria: "Орус тилин тандоо",
                 languageEnAria: "Англис тилин тандоо",
-                languageTrAria: "Түрк тилин тандоо",
-                copyLinkAria: "Чакыруу шилтемесин көчүрүү",
-                copyLinkTitle: "Шилтемени көчүрүү",
-                copyLinkDone: "Шилтеме көчүрүлдү",
-                copyLinkFailed: "Шилтемени көчүрүү мүмкүн болбой калды",
                 welcomeKicker: "Үйлөнүү үлпөтүнө чакыруу",
                 welcomeTitle: "Дилмурат & Аида",
                 welcomeDate: "25-июль, 2026",
@@ -2010,11 +1980,6 @@
                 languageKyAria: "Выбрать кыргызский язык",
                 languageRuAria: "Выбрать русский язык",
                 languageEnAria: "Выбрать английский язык",
-                languageTrAria: "Выбрать турецкий язык",
-                copyLinkAria: "Скопировать ссылку на приглашение",
-                copyLinkTitle: "Скопировать ссылку",
-                copyLinkDone: "Ссылка скопирована",
-                copyLinkFailed: "Не удалось скопировать ссылку",
                 welcomeKicker: "Приглашение на свадьбу",
                 welcomeTitle: "Дилмурат & Аида",
                 welcomeDate: "25 июля 2026",
@@ -2089,11 +2054,6 @@
                 languageKyAria: "Select Kyrgyz language",
                 languageRuAria: "Select Russian language",
                 languageEnAria: "Select English language",
-                languageTrAria: "Select Turkish language",
-                copyLinkAria: "Copy invitation link",
-                copyLinkTitle: "Copy link",
-                copyLinkDone: "Link copied",
-                copyLinkFailed: "Could not copy the link",
                 welcomeKicker: "Wedding invitation",
                 welcomeTitle: "Dilmurat & Aida",
                 welcomeDate: "July 25, 2026",
@@ -2158,92 +2118,11 @@
                 calendarSummary: "Dilmurat and Aida's wedding",
                 calendarLocation: "Cafe Yrysky, Bishkek",
                 calendarDescription: "Dilmurat and Aida's wedding celebration. Starts at 5:00 PM."
-            },
-            tr: {
-                htmlLang: "tr",
-                title: "Dilmurat & Aida | Düğün Davetiyesi",
-                metaDescription: "Dilmurat ve Aida'nın düğün davetiyesi. 25 Temmuz 2026, saat 17:00, Bişkek.",
-                languageLabel: "Dil",
-                languageSelectLabel: "Dil seç",
-                languageKyAria: "Kırgızca seç",
-                languageRuAria: "Rusça seç",
-                languageEnAria: "İngilizce seç",
-                languageTrAria: "Türkçe seç",
-                copyLinkAria: "Davet linkini kopyala",
-                copyLinkTitle: "Linki kopyala",
-                copyLinkDone: "Link kopyalandı",
-                copyLinkFailed: "Link kopyalanamadı",
-                welcomeKicker: "Düğün davetiyesi",
-                welcomeTitle: "Dilmurat & Aida",
-                welcomeDate: "25 Temmuz 2026",
-                welcomeButton: "Daveti aç",
-                welcomeButtonAria: "Düğün davetiyesini aç",
-                heroEyebrow: "Düğün davetiyesi",
-                heroTitle: "Dilmurat & Aida",
-                heroCopy: "Değerli misafirimiz, hayatımızın en özel günlerinden birini bizimle kutlamaya sizi içtenlikle davet ediyoruz.",
-                heroActionsAria: "Ana işlemler",
-                heroConfirm: "Katılımı bildir",
-                heroDetails: "Detayları gör",
-                countdownAria: "Düğüne kalan süre",
-                timeDays: "Gün",
-                timeHours: "Saat",
-                timeMinutes: "Dakika",
-                timeSeconds: "Saniye",
-                introEyebrow: "Siz bizim için değerlisiniz",
-                introLead: "Bu gün sıcaklık, güzel dilekler ve sevinçle dolsun. Katılımınız kutlamamızı daha da anlamlı kılacak.",
-                dateAria: "Düğün tarihi",
-                dateWeekday: "Cumartesi",
-                dateMonth: "Temmuz",
-                detailsEyebrow: "Bilgi",
-                detailsTitle: "Düğün detayları",
-                detailDateLabel: "Tarih",
-                detailDateTitle: "25 Temmuz 2026",
-                detailDateCopy: "Cumartesi",
-                detailTimeLabel: "Saat",
-                detailTimeTitle: "17:00",
-                detailTimeCopy: "Kutlama saat 17:00'de başlayacak.",
-                venueAria: "Mekan",
-                venueLabel: "Mekan",
-                venueTitle: "Bişkek, Cafe Ырыскы",
-                venueCopy: "Haritada rotayı açın veya tarihi takviminize ekleyin.",
-                openMap: "Haritayı aç",
-                addCalendar: "Takvime ekle",
-                rsvpEyebrow: "Sizi bekliyoruz",
-                rsvpTitle: "Katılımınızı bize bildirin.",
-                rsvpLead: "Formu doldurduğunuzda WhatsApp hazır bir mesajla açılır. Böylece misafir listesini netleştirip yerleri önceden hazırlayabiliriz.",
-                guestNameLabel: "Adınız",
-                guestNamePlaceholder: "Örnek: Nurbek",
-                attendanceLabel: "Katılacak mısınız?",
-                attendanceYes: "Katılacağım",
-                attendanceNo: "Katılamayacağım",
-                guestCountLabel: "Kaç kişi?",
-                count1: "1 kişi",
-                count2: "2 kişi",
-                count3: "3 kişi",
-                count4: "4 veya daha fazla",
-                guestNoteLabel: "Ek mesaj",
-                guestNotePlaceholder: "Dilek veya ek bilgi",
-                rsvpSubmit: "WhatsApp ile gönder",
-                footer: "Dilmurat & Aida · 25 Temmuz 2026 · Bişkek",
-                formErrorName: "Lütfen adınızı yazın.",
-                formStatusSent: "WhatsApp açıldı. Lütfen mesajı gönderin.",
-                whatsappDefault: "Merhaba! Davetiyeyi aldım. Allah nasip ederse düğüne mutlaka geleceğiz!",
-                whatsappGreeting: "Merhaba! Davetiyeyi aldım.",
-                messageName: "Adım",
-                messageAttendance: "Yanıtım",
-                messageCount: "Misafir sayısı",
-                messageNote: "Not",
-                messageThanks: "Teşekkürler!",
-                calendarSummary: "Dilmurat ve Aida'nın düğünü",
-                calendarLocation: "Cafe Ырыскы, Bişkek",
-                calendarDescription: "Dilmurat ve Aida'nın düğün kutlaması. Başlangıç: 17:00."
             }
         };
 
         const languageControls = Array.from(document.querySelectorAll("[data-language-control]"));
         const languageOptions = Array.from(document.querySelectorAll("[data-language-option]"));
-        const copyLinkButtons = Array.from(document.querySelectorAll("[data-copy-link]"));
-        const copyStatus = document.getElementById("copyStatus");
         const rsvpForm = document.getElementById("rsvpForm");
         const formStatus = document.getElementById("formStatus");
         const welcomeScreen = document.getElementById("welcomeScreen");
@@ -2314,58 +2193,6 @@
         });
 
         applyTranslations(currentLanguage);
-
-        let copyStatusTimer;
-
-        function getInvitationLink() {
-            const url = new URL(window.location.href);
-            url.hash = "";
-            return url.href;
-        }
-
-        function showCopyStatus(message) {
-            if (!copyStatus) return;
-
-            copyStatus.textContent = message;
-            copyStatus.classList.add("is-visible");
-            window.clearTimeout(copyStatusTimer);
-            copyStatusTimer = window.setTimeout(() => {
-                copyStatus.classList.remove("is-visible");
-            }, 2200);
-        }
-
-        function fallbackCopy(text) {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            textarea.setAttribute("readonly", "");
-            textarea.style.position = "fixed";
-            textarea.style.top = "-1000px";
-            textarea.style.opacity = "0";
-            document.body.appendChild(textarea);
-            textarea.select();
-            const copied = document.execCommand("copy");
-            textarea.remove();
-            if (!copied) throw new Error("Copy command failed");
-        }
-
-        async function copyInvitationLink() {
-            const link = getInvitationLink();
-
-            try {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(link);
-                } else {
-                    fallbackCopy(link);
-                }
-                showCopyStatus(getText("copyLinkDone"));
-            } catch (error) {
-                showCopyStatus(getText("copyLinkFailed"));
-            }
-        }
-
-        copyLinkButtons.forEach((button) => {
-            button.addEventListener("click", copyInvitationLink);
-        });
 
         function openInvitation() {
             document.body.classList.add("invitation-open");
